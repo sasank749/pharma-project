@@ -1,0 +1,81 @@
+course
+
+courseid
+name
+coursetype
+description
+photo
+
+
+chapter 
+
+chapterid
+name
+description
+chapter_video
+courseid
+
+
+User
+
+userId
+userName
+email
+usertype
+password
+
+
+UserCourses
+userCourseId
+userId
+courseId
+
+
+CREATE TABLE Usercourses (
+    userCourseId int NOT NULL AUTO_INCREMENT,
+	userId int NOT NULL,
+    courseId int NOT NULL,
+	courseregdate datetime,
+    PRIMARY KEY (userCourseId),
+    FOREIGN KEY (userId) REFERENCES user(userId),
+	FOREIGN KEY (courseId) REFERENCES course(courseId)
+);
+
+CREATE TABLE User (
+    userId int NOT NULL AUTO_INCREMENT,
+    userName varchar(255) NOT NULL,
+    email varchar(255) NOT NULL,
+    usertype varchar(255) NOT NULL,
+	password varchar(255) NOT NULL,
+    PRIMARY KEY (userId)
+);
+
+CREATE TABLE Course (
+    courseId int NOT NULL AUTO_INCREMENT,
+    courseName varchar(255) NOT NULL,
+    courseType varchar(255),
+    description varchar(255),
+    photo varchar(255),
+    PRIMARY KEY (courseId)
+);
+
+CREATE TABLE Chapter (
+    chapterId int NOT NULL AUTO_INCREMENT,
+    chapterName varchar(255) NOT NULL,
+    description varchar(255),
+    video varchar(255),
+    courseId int,
+    PRIMARY KEY (chapterId),
+    FOREIGN KEY (courseId) REFERENCES course(courseId)
+);
+
+CREATE TABLE ChapterData (
+    chapterDataId int NOT NULL AUTO_INCREMENT,
+	userCourseId int,
+	chapterId int,
+	chapcompldate datetime,
+    PRIMARY KEY (chapterDataId),
+    FOREIGN KEY (userCourseId) REFERENCES Usercourses(userCourseId),
+	FOREIGN KEY (chapterId) REFERENCES chapter(chapterId)
+);
+

@@ -1,0 +1,17 @@
+.after-check,.before-check {
+  padding: 0; 
+  border: 0;
+  height: 0;
+}
+.chapterdata{
+	display: flex; 
+	flex-direction: row-reverse; 
+	justify-content: space-between; 
+	margin-top: 10px;
+}
+.chapterdetails{
+	width: 95%
+}
+.after-check-image,.before-check-image{
+	margin-top: 20px;
+}
